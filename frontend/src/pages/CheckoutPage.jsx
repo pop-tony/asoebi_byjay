@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { ArrowRight, Check } from 'lucide-react'
 import { useStore } from '../store/useStore'
+import { fabricImages } from '../data/fabricImages'
 
 export default function CheckoutPage() {
   const cart = useStore((state) => state.cart)
@@ -74,7 +75,9 @@ export default function CheckoutPage() {
           </div>
         </div>
 
-        <aside className="rounded-[32px] border border-[#eae2d6] bg-[#f3efe9] p-6">
+        <aside className="relative isolate overflow-hidden rounded-[32px] border border-[#eae2d6] bg-[#f3efe9] p-6">
+          <img src={fabricImages.foldedTextiles} alt="" loading="lazy" className="absolute inset-0 -z-20 h-full w-full object-cover" />
+          <div className="absolute inset-0 -z-10 bg-[#f3efe9]/90" />
           <p className="text-[10px] uppercase tracking-[0.22rem] text-[#666666]">Order summary</p>
           <div className="mt-6 space-y-4">
             {cart.map((item) => (

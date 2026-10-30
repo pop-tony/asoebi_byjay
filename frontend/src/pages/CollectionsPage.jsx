@@ -1,25 +1,8 @@
 import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import SectionTitle from '../components/SectionTitle'
-
-const collections = [
-  {
-    title: 'Bridal',
-    description: 'Explore fabric options for bridal style and wedding celebrations.'
-  },
-  {
-    title: 'Asoebi',
-    description: 'Find fabrics for coordinated looks at weddings and special occasions.'
-  },
-  {
-    title: 'Brocades & premium fabrics',
-    description: 'Discover fabrics for a memorable occasion outfit.'
-  },
-  {
-    title: 'Headties, veils & accessories',
-    description: 'Add the finishing touches to your celebration look.'
-  }
-]
+import { fabricImages } from '../data/fabricImages'
+import { fabricProducts } from '../data/fabricProducts'
 
 export default function CollectionsPage() {
   return (
@@ -31,23 +14,38 @@ export default function CollectionsPage() {
       />
 
       <div className="mt-10 grid gap-5 md:grid-cols-2">
-        {collections.map((collection, index) => (
-          <article key={collection.title} className="rounded-[28px] border border-[#eae2d6] bg-[#f8f3ed] p-8 md:p-10">
-            <p className="text-[10px] uppercase tracking-[0.22rem] text-[#9b7a3d]">
+        {fabricProducts.map((collection, index) => (
+          <article key={collection.id} className="group relative isolate flex min-h-[320px] flex-col justify-end overflow-hidden rounded-[28px] bg-[#294438] p-8 text-white md:min-h-[380px] md:p-10">
+            <img
+              src={collection.image}
+              alt={`${collection.name} collection`}
+              loading="lazy"
+              className="absolute inset-0 -z-20 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#17251e]/90 via-[#17251e]/20 to-transparent" />
+            <p className="text-[10px] uppercase tracking-[0.22rem] text-white/75">
               0{index + 1} · Asoebi by Jay
             </p>
-            <h2 className="mt-5 font-['Playfair_Display'] text-3xl text-[#111111]">{collection.title}</h2>
-            <p className="mt-4 max-w-md text-base leading-7 text-[#666666]">{collection.description}</p>
+            <h2 className="mt-4 font-['Playfair_Display'] text-3xl">{collection.name}</h2>
+            <p className="mt-3 max-w-md text-base leading-7 text-white/85">{collection.description}</p>
+            <Link
+              to={`/fabric/${collection.slug}`}
+              className="mt-5 inline-flex w-fit items-center gap-2 text-xs uppercase tracking-[0.16em] text-white/90"
+            >
+              Explore fabric <ArrowRight className="h-4 w-4" />
+            </Link>
           </article>
         ))}
       </div>
 
-      <div className="mt-10 flex flex-col gap-5 rounded-[28px] bg-[#111111] p-8 text-white md:flex-row md:items-center md:justify-between md:p-10">
+      <div className="relative isolate mt-10 flex flex-col gap-5 overflow-hidden rounded-[28px] bg-[#20352b] p-8 text-white md:flex-row md:items-center md:justify-between md:p-10">
+        <img src={fabricImages.laceDetail} alt="" loading="lazy" className="absolute inset-0 -z-20 h-full w-full object-cover" />
+        <div className="absolute inset-0 -z-10 bg-[#20352b]/85" />
         <div>
           <p className="text-[10px] uppercase tracking-[0.22rem] text-[#d4c3aa]">Visit us in Abuja</p>
           <p className="mt-3 text-lg leading-7">19 Kampala Street, Wuse 2, Abuja, Nigeria</p>
         </div>
-        <Link to="/contact" className="inline-flex w-fit items-center gap-2 rounded-full bg-white px-5 py-3 text-xs uppercase tracking-[0.18em] text-[#111111]">
+        <Link to="/contact" className="inline-flex w-fit items-center gap-2 rounded-full bg-white px-5 py-3 text-xs uppercase tracking-[0.18em] text-[#294438]">
           Contact &amp; directions <ArrowRight className="h-4 w-4" />
         </Link>
       </div>

@@ -1,8 +1,14 @@
 import { Link } from 'react-router-dom'
+import { fabricImages } from '../data/fabricImages'
 
 export default function Footer() {
   return (
     <footer className="border-t border-[#eae2d6] bg-[#f3efe9]">
+      <div className="relative isolate flex h-28 items-center justify-center overflow-hidden bg-[#20352b] px-4 text-center text-white">
+        <img src={fabricImages.foldedTextiles} alt="" loading="lazy" className="absolute inset-0 -z-20 h-full w-full object-cover" />
+        <div className="absolute inset-0 -z-10 bg-[#20352b]/75" />
+        <p className="font-['Playfair_Display'] text-2xl md:text-3xl">A little detail makes a lasting impression.</p>
+      </div>
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 md:grid-cols-4 md:px-8">
         <div>
           <div className="flex items-center gap-3">
@@ -56,6 +62,21 @@ export default function Footer() {
       </div>
       <div className="border-t border-[#eae2d6] px-4 py-6 text-center text-xs uppercase tracking-[0.18em] text-[#666666] md:px-8">
         © 2026 Asoebi by Jay · Abuja, Nigeria
+      </div>
+      <div className="px-4 pb-5 text-center text-[10px] text-[#77746d]">
+        Wax-print photo by{' '}
+        <a
+          href="https://commons.wikimedia.org/wiki/File:Waxprints_in_a_West_African_Shop.jpg"
+          target="_blank"
+          rel="noreferrer"
+          className="underline underline-offset-2"
+        >
+          Alexander Sarlay
+        </a>
+        {' · '}
+        <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noreferrer" className="underline underline-offset-2">
+          CC BY-SA 3.0
+        </a>
       </div>
     </footer>
   )

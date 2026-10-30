@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom'
 import ProductCard from '../components/ProductCard'
 import { products } from '../data/products'
 import { useStore } from '../store/useStore'
+import { fabricShowcase } from '../data/fabricImages'
 
 export default function ProductDetailPage() {
   const { slug } = useParams()
@@ -131,6 +132,25 @@ export default function ProductDetailPage() {
           </div>
         </div>
       </div>
+
+      <section className="mt-20">
+        <div className="mb-7 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p className="text-[10px] uppercase tracking-[0.22rem] text-[#776852]">Asoebi by Jay · Abuja</p>
+            <h2 className="mt-3 font-['Playfair_Display'] text-3xl text-[#294438]">A little more fabric inspiration.</h2>
+          </div>
+          <Link to="/collections" className="text-xs uppercase tracking-[0.16em] text-[#294438]">Explore collections</Link>
+        </div>
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+          {fabricShowcase.map((sample) => (
+            <div key={sample.name} className="group relative aspect-[4/3] overflow-hidden rounded-[20px] bg-[#e8e0d5]">
+              <img src={sample.image} alt={sample.alt} loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#17251e]/55 to-transparent" />
+              <p className="absolute bottom-4 left-4 text-sm text-white">{sample.name}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <div className="mt-20">
         <div className="mb-8 flex items-center justify-between">
